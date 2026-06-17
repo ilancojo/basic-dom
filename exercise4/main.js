@@ -46,25 +46,27 @@
     if (isNaN(phone)) {
         errors.push("Phone must contain only numbers")
     }
+
     //creating error message for user
     if (errors.length> 0) {
-        for (let error of errors) {
-            const errorMessage = document.createElement("div")
-            errorMessage.classList.add("error")
-            errorMessage.innerHTML = error
 
-            errorsDiv.appendChild(errorMessage)
+        for (let error of errors) {
+            const errorMessage = document.createElement("div");
+            errorMessage.classList.add("error");
+            errorMessage.innerHTML = error;
+            errorsDiv.appendChild(errorMessage);
         }
     }
 
     // NO ERROR
     else {
-        const successMessage = document.createElement("div")
-        successMessage.classList.add("success")
-        successMessage.innerHTML = "Form submitted successfully!"
-        errorsDiv.appendChild(successMessage)
+        const container = document.getElementById("container");
+        const welcomeMessage = document.getElementById("welcome-message");
+
+        container.style.display = "none";
+        welcomeMessage.innerHTML = `Welcome, ${name}!`;
     }
 }
 
-const submitButton = document.getElementById("submit-btn")
-submitButton.addEventListener("click", validate)
+const submitButton = document.getElementById("submit-btn");
+submitButton.addEventListener("click", validate);
